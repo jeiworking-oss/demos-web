@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f2ede4">
+<title>Tu Peluquería · Turnos online</title>
+<meta name="description" content="Elegí tus servicios, el día y el horario, y pedí tu turno por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2ede4;--paper:#faf7f1;--ink:#2a2d26;--mut:#625f54;--line:#ddd5c5;--sage:#5b6c4d;--sage2:#e4e9db;--clay:#a8684d;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);--wa:#25d366}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:400;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+img{display:block;max-width:100%}
+svg.i{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+svg.i.f{fill:currentColor;stroke:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+.demo{background:var(--ink);color:#d9d3c4;font-size:.72rem;letter-spacing:.03em;text-align:center;padding:.5rem 1rem;line-height:1.35}
+.demo b{color:#fff;font-weight:500}
+
+/* top */
+.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0 0}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.02em}
+.logo i{font-weight:500;color:var(--sage)}
+.pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;letter-spacing:.04em;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:.35rem .85rem}
+.dot{width:7px;height:7px;border-radius:50%;background:#bbb;position:relative}
+.pill.open .dot{background:#4caf6e}.pill.open .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #4caf6e;animation:ping 2s infinite}
+.pill.closed .dot{background:var(--clay)}
+@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.8);opacity:0}}
+
+/* hero */
+.hero{text-align:center;padding:28px 0 46px}
+.arch{width:min(78vw,340px);aspect-ratio:4/5;margin:0 auto;border-radius:999px 999px 24px 24px;overflow:hidden;position:relative;box-shadow:0 40px 60px -40px rgba(60,50,30,.55);animation:rise 1.1s var(--ease) both}
+.arch img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);animation:settle 2s var(--ease) forwards}
+@keyframes settle{to{transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+.eyebrow{margin-top:30px;font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--sage);font-weight:500;animation:rise 1s .15s var(--ease) both}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(3rem,13vw,5.6rem);line-height:.95;letter-spacing:-.01em;margin:.5rem 0 .9rem;animation:rise 1s .25s var(--ease) both}
+h1 em{font-style:italic;color:var(--sage)}
+.lead{max-width:26rem;margin:0 auto;color:var(--mut);font-weight:400;font-size:1.05rem;animation:rise 1s .35s var(--ease) both}
+.cta{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem;animation:rise 1s .45s var(--ease) both}
+.btn{display:inline-flex;align-items:center;gap:.55rem;border-radius:999px;padding:.9rem 1.6rem;font-weight:500;font-size:.95rem;letter-spacing:.03em;text-decoration:none;transition:all .25s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn.main{background:var(--ink);color:#fff}.btn.main:hover{background:var(--sage)}
+.btn.line{border:1px solid var(--ink);color:var(--ink)}.btn.line:hover{background:var(--ink);color:#fff}
+
+/* servicios */
+.sec{padding:20px 0 10px}
+.kick{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);font-weight:500}
+.h2{font-family:var(--serif);font-size:clamp(2.1rem,7vw,3.2rem);font-weight:500;line-height:1;margin:.3rem 0 .4rem}
+.h2 em{font-style:italic;color:var(--sage)}
+.how{display:flex;gap:10px;margin:18px 0 8px;flex-wrap:wrap;color:var(--mut);font-size:.85rem}
+.how span{display:flex;align-items:center;gap:.5rem}
+.how b{width:22px;height:22px;border-radius:50%;background:var(--sage2);color:var(--sage);display:grid;place-items:center;font-size:.75rem;font-weight:600}
+.cat{padding-top:30px}
+.cathead{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.cathead .th{width:72px;height:88px;border-radius:999px 999px 14px 14px;overflow:hidden;flex:none;background:var(--sage2)}
+.cathead .th img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.cat:hover .th img{transform:scale(1.1)}
+.cathead h3{font-family:var(--serif);font-size:2rem;font-weight:500;line-height:1}
+.cathead p{color:var(--mut);font-size:.85rem;font-weight:400}
+.svc{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:1rem .2rem;border-bottom:1px solid var(--line);transition:all .3s var(--ease);border-radius:0;position:relative}
+@media(hover:hover){.svc:hover{padding-left:.7rem}}
+.svc .tx{flex:1;min-width:0}
+.svc b{display:block;font-weight:500;font-size:1.05rem;line-height:1.25}
+.svc small{display:block;color:var(--mut);font-size:.82rem;font-weight:400;margin-top:.1rem}
+.svc .pr{text-align:right;font-family:var(--serif);font-size:1.35rem;font-weight:600;white-space:nowrap;line-height:1.1}
+.svc .pr small{font-family:var(--sans);font-size:.72rem;font-weight:400;margin:0}
+.chk{width:30px;height:30px;border-radius:50%;border:1.5px solid #c4bba8;display:grid;place-items:center;flex:none;color:transparent;transition:all .3s var(--ease)}
+.chk svg{width:15px;height:15px;stroke-width:2.6}
+.svc.on{background:linear-gradient(90deg,var(--sage2),transparent);}
+.svc.on .chk{background:var(--sage);border-color:var(--sage);color:#fff;transform:scale(1.08)}
+@media(hover:hover){.svc.on:hover{padding-left:.2rem}}
+
+/* trabajos */
+.work{padding:60px 0 20px}
+.mos{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:1fr 1fr;gap:12px;margin-top:20px;height:min(110vw,520px)}
+.mos div{overflow:hidden;border-radius:18px;position:relative}
+.mos div:first-child{grid-row:span 2;border-radius:999px 999px 18px 18px}
+.mos img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.mos div:hover img{transform:scale(1.06)}
+
+/* info */
+.info{background:var(--ink);color:#e7e1d3;margin-top:50px;padding:56px 0 46px}
+.info .h2{color:#fff}.info .h2 em{color:#b7c6a6}
+.cols{display:grid;gap:34px;margin-top:26px}
+.info h4{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#b7c6a6;margin-bottom:.8rem;font-weight:500}
+.hr{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:400}
+.hr.today{color:#fff;font-weight:500}.hr.today span:first-child::after{content:" · hoy";color:#b7c6a6}
+.addr{font-family:var(--serif);font-size:1.8rem;line-height:1.1;color:#fff;margin-bottom:.8rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:1rem}
+.lnk{display:inline-flex;gap:.5rem;align-items:center;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.6rem 1.1rem;font-size:.88rem;transition:all .2s}
+.lnk:hover{background:#fff;color:var(--ink)}
+footer{background:#1d1f1a;color:#8a8777;text-align:center;font-size:.76rem;padding:22px 18px 120px}
+
+/* barra reserva */
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));max-width:600px;margin:0 auto;z-index:40;background:var(--ink);color:#fff;border-radius:22px;padding:.85rem .85rem .85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:0 22px 44px -14px rgba(20,25,10,.6);transform:translateY(160%);transition:transform .55s var(--ease)}
+.bar.show{transform:none}
+.bar .s{line-height:1.25}.bar .s b{display:block;font-family:var(--serif);font-size:1.45rem;font-weight:600}
+.bar .s span{font-size:.78rem;color:#c9c3b3;font-weight:400}
+.bar button{background:var(--sage);color:#fff;border-radius:999px;padding:.85rem 1.3rem;font-weight:500;letter-spacing:.02em;transition:background .2s,transform .2s}
+.bar button:hover{background:#6c7e5c}
+:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.in-t:focus-visible{outline:0}
+.bar :focus-visible{outline-color:#fff}
+.why{background:var(--paper);border-top:1px solid var(--line);padding:56px 0 50px}
+.why .h2{margin-bottom:1.2rem}
+.why ul{list-style:none;display:grid;gap:12px}
+.why li{display:flex;gap:.8rem;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:.95rem 1.1rem;font-size:.92rem;color:var(--mut)}
+.why li b{display:block;color:var(--ink);font-weight:500;font-size:1rem}
+.why li svg{width:1.3rem;height:1.3rem;color:var(--sage);margin-top:.15rem}
+@media(min-width:760px){.why ul{grid-template-columns:repeat(3,1fr)}}.bar button:active{transform:scale(.96)}
+.bar.bump{animation:bump .4s var(--ease)}@keyframes bump{40%{transform:scale(1.03)}}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:39;width:54px;height:54px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px -8px rgba(0,80,30,.6);transition:all .3s var(--ease)}
+.fab svg{width:28px;height:28px}.fab.hide{transform:scale(0);opacity:0;pointer-events:none}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(25,28,20,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:60;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.show{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:61;left:0;right:0;bottom:0;max-height:93svh;background:var(--bg);border-radius:28px 28px 0 0;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .5s var(--ease);visibility:hidden;overflow:hidden}
+.sheet.show{transform:none;visibility:visible}
+.sheet .grab{width:42px;height:4px;background:#cfc6b2;border-radius:9px;margin:10px auto 0;flex:none}
+.sheet .scroll{overflow-y:auto;flex:1;overscroll-behavior:contain;padding:8px 22px 18px}
+.x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;background:var(--paper);display:grid;place-items:center;border:1px solid var(--line)}
+.sheet h3{font-family:var(--serif);font-size:2rem;font-weight:500;line-height:1;padding-top:14px}
+.sheet h3 em{font-style:italic;color:var(--sage)}
+.lbl{font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);font-weight:500;margin:1.5rem 0 .7rem;display:flex;align-items:center;gap:.6rem}
+.lbl b{width:20px;height:20px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;font-size:.7rem;letter-spacing:0}
+.resumen{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:.4rem 1rem;margin-top:14px}
+.resumen div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.resumen div:last-child{border:0;font-weight:600;font-family:var(--serif);font-size:1.25rem}
+.resumen span:last-child{white-space:nowrap}
+.days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:3px 22px 6px;margin:0 -22px}
+.days::-webkit-scrollbar{display:none}
+.day{flex:none;width:62px;padding:.7rem 0;border-radius:18px;border:1px solid var(--line);background:var(--paper);text-align:center;transition:all .25s var(--ease);line-height:1.15}
+.day small{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.day b{font-family:var(--serif);font-size:1.7rem;font-weight:600;display:block}
+.day.on{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-3px)}
+.day.on small{color:#b7c6a6}
+.day[disabled]{opacity:.38;cursor:not-allowed;background:transparent;border-style:dashed}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{padding:.7rem 0;border-radius:12px;border:1px solid var(--line);background:var(--paper);font-weight:500;font-size:.92rem;transition:all .2s var(--ease)}
+.slot:hover{border-color:var(--sage)}
+.slot.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.hint{color:var(--mut);font-size:.85rem;font-weight:400}
+.in-t{width:100%;font:inherit;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:.85rem 1rem;outline:0;color:var(--ink);transition:all .2s}
+.in-t:focus{border-color:var(--sage);box-shadow:0 0 0 4px rgba(91,108,77,.2)}
+.in-t.err{border-color:#c0583e;animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.pros{display:flex;flex-wrap:wrap;gap:8px}
+.pro{padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:.88rem;transition:all .2s}
+.pro.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.foot{padding:12px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--bg);flex:none}
+.big{width:100%;background:var(--wa);color:#05381b;border-radius:999px;padding:1rem;font-weight:600;font-size:1rem;display:flex;gap:.6rem;align-items:center;justify-content:center;box-shadow:0 14px 26px -12px #139c4a;transition:transform .2s}
+.big:active{transform:scale(.98)}
+.note{text-align:center;color:var(--mut);font-size:.76rem;margin-top:.55rem;font-weight:400}
+.toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-260%);opacity:0;z-index:90;background:var(--ink);color:#fff;border-radius:999px;padding:.65rem 1.1rem;font-size:.86rem;box-shadow:0 14px 30px rgba(0,0,0,.3);transition:transform .45s var(--ease),opacity .3s;max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0);opacity:1}
+[data-r]{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+[data-r].in{opacity:1;transform:none}
+
+@media(min-width:760px){
+  .wrap{padding:0 40px}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;text-align:left;padding:40px 0 70px}
+  .arch{width:min(100%,400px);margin:0 0 0 auto;grid-column:2;grid-row:1}
+  .hero .txt{grid-column:1;grid-row:1}
+  .lead{margin:0}.cta{justify-content:flex-start}
+  .cat .list{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+  .cols{grid-template-columns:1fr 1fr 1fr}
+  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:560px;border-radius:28px;transform:translate(-50%,-44%) scale(.96);opacity:0;max-height:90svh;transition:all .45s var(--ease)}
+  .sheet.show{transform:translate(-50%,-50%);opacity:1}
+  .grab{display:none}
+  .bar{left:50%;right:auto;transform:translate(-50%,160%);width:560px}.bar.show{transform:translate(-50%,0)}
+  .bar.bump{animation:none}
+  .slots{grid-template-columns:repeat(5,1fr)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-r]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="demo" id="demo"></div>
+
+<div class="wrap">
+  <div class="top"><div class="logo" id="logo"></div><div class="pill" id="estado"><span class="dot"></span><span id="estadoTx"></span></div></div>
+  <header class="hero">
+    <div class="arch"><img id="heroimg" alt="Interior del salón"></div>
+    <div class="txt">
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 id="nombre"></h1>
+      <p class="lead" id="eslogan"></p>
+      <div class="cta"><a class="btn main" href="#servicios">Elegir servicios</a><a class="btn line" id="waTop" target="_blank" rel="noopener">Consultar</a></div>
+    </div>
+  </header>
+</div>
+
+<main id="servicios" class="wrap">
+  <div class="sec">
+    <div class="kick" data-r>Servicios</div>
+    <h2 class="h2" data-r>Armá tu turno <em>a tu medida</em></h2>
+    <div class="how" data-r><span><b>1</b>Elegí uno o más servicios</span><span><b>2</b>Día y horario</span><span><b>3</b>Confirmás por WhatsApp</span></div>
+  </div>
+  <div id="menu"></div>
+
+  <section class="work">
+    <div class="kick" data-r>Trabajos</div>
+    <h2 class="h2" data-r>Cuidado <em>con detalle</em></h2>
+    <div class="mos" data-r><div><img id="g1" alt="Color"></div><div><img id="g2" alt="Corte"></div><div><img id="g3" alt="Barba"></div></div>
+  </section>
+</main>
+
+<section class="info">
+  <div class="wrap">
+    <div class="kick" style="color:#b7c6a6">Visitanos</div>
+    <h2 class="h2">Te esperamos <em>con un café</em></h2>
+    <div class="cols">
+      <div><h4>Horarios</h4><div id="horarios"></div></div>
+      <div><h4>Dónde</h4><div class="addr" id="dir"></div><div class="links" id="links"></div></div>
+      <div><h4>Medios de pago</h4><p style="font-weight:400" id="pagos"></p><p style="font-weight:400;margin-top:.8rem">Los turnos se confirman por WhatsApp. Si necesitás cancelar o reprogramar, avisanos con 24 h.</p></div>
+    </div>
+  </div>
+</section>
+<section class="why" id="why" hidden>
+  <div class="wrap">
+    <div class="kick">Para tu negocio</div>
+    <h2 class="h2">Esto mismo, con tus servicios <em>y tu WhatsApp</em></h2>
+    <ul>
+      <li><svg class="i" viewBox="0 0 24 24"><use href="#i-wa"/></svg><span><b>Los turnos llegan a tu WhatsApp</b>Con servicios, día, hora y nombre ya armados. Vos confirmás con un toque. Sin comisiones.</span></li>
+      <li><svg class="i" viewBox="0 0 24 24"><use href="#i-check"/></svg><span><b>Lo actualizás cuando quieras</b>Cambio de precios, servicios nuevos u horarios: nos escribís por WhatsApp y lo cambiamos.</span></li>
+      <li><svg class="i" viewBox="0 0 24 24"><use href="#i-phone"/></svg><span><b>Un link y un QR para compartir</b>Para Instagram, la vidriera o la recepción del salón.</span></li>
+    </ul>
+  </div>
+</section>
+<footer id="foot"></footer>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg class="i f" viewBox="0 0 24 24"><use href="#i-wa"/></svg></a>
+<div class="bar" id="bar"><div class="s"><b id="bt"></b><span id="bs"></span></div><button id="bgo">Reservar turno</button></div>
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Reservar turno"></aside>
+<div class="toast" id="toast" role="status"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.94L2 22l5.2-1.5A9.93 9.93 0 1 0 12.04 2zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.9-.12a17 17 0 0 1-1.72-.64c-3-1.3-4.94-4.3-5.1-4.5-.14-.2-1.2-1.6-1.2-3.04 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.5.25.6.84 2.06.92 2.2.07.16.12.33.02.52-.1.2-.15.32-.3.5-.15.17-.3.38-.44.5-.15.16-.3.33-.13.64.17.3.77 1.27 1.65 2.05 1.13 1 2.1 1.32 2.4 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.28.1 1.74.82 2.04.97.3.15.5.22.57.35.07.12.07.72-.18 1.4z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+</defs></svg>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN DEL NEGOCIO  ·  Editá sólo este bloque
+   ============================================================ */
+/*CONFIG*/
+const NEGOCIO = {
+  nombre: "Tu Peluquería",
+  sufijo: "",
+  rubro: "Peluquería",
+  ciudad: "Tu ciudad",
+  eslogan: "Cortes, color y tratamientos para todos. Elegí tu servicio y reservá tu turno en un minuto.",
+  hero: "abba-salon.jpg",
+  galeria: ["abba-color.jpg","abba-corte.jpg","abba-barba.jpg"],
+  direccion: "Tu dirección 123",
+  telefono: "+54 9 11 7076-6791",
+  whatsapp: "5491170766791",
+  instagram: "https://instagram.com/",
+  pagos: "Efectivo, transferencia y Mercado Pago",
+  // dias: 0=domingo ... 6=sábado
+  horarios: [
+    { label: "Martes a viernes", dias: [2,3,4,5], de: "09:00", a: "19:00" },
+    { label: "Sábados",          dias: [6],       de: "09:00", a: "15:00" }
+  ],
+  intervalo: 30,                    // cada cuántos minutos se ofrece un horario
+  profesionales: ["Sin preferencia", "Equipo"],   // dejá [] para ocultar la opción
+  demo: true,
+  categorias: [
+    { id:"cortes", nombre:"Cortes", sub:"Con lavado y peinado", img:"abba-corte.jpg" },
+    { id:"color", nombre:"Color", sub:"Tinturas y luminosidad", img:"abba-color.jpg" },
+    { id:"barba", nombre:"Hombres", sub:"Barba y detalles", img:"abba-barba.jpg" },
+    { id:"trat", nombre:"Tratamientos", sub:"Nutrición y alisados", img:"abba-salon.jpg" }
+  ],
+  // min = duración estimada. desde:true muestra "desde".
+  servicios: [
+    { cat:"cortes", n:"Corte mujer", d:"Lavado, corte y peinado", min:60, p:14000 },
+    { cat:"cortes", n:"Corte hombre", d:"Clásico o degradé", min:40, p:9000 },
+    { cat:"cortes", n:"Corte niños", d:"Hasta 10 años", min:30, p:7000 },
+    { cat:"color", n:"Tintura raíz", d:"Cobertura de canas o retoque", min:90, p:18000 },
+    { cat:"color", n:"Mechitas / balayage", d:"Consultar según largo", min:180, p:35000, desde:true },
+    { cat:"barba", n:"Perfilado de barba", d:"Toalla caliente y terminación", min:25, p:5500 },
+    { cat:"trat", n:"Hidratación profunda", d:"Mascarilla y masaje capilar", min:45, p:12000 },
+    { cat:"trat", n:"Alisado", d:"Consultar según largo", min:150, p:40000, desde:true }
+  ]
+};
+/*END*/
+
+/* ============================================================
+   MOTOR (no hace falta tocar nada de acá para abajo)
+   ============================================================ */
+const N=NEGOCIO;
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const money=n=>"$ "+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ic=(n,c="")=>`<svg class="i ${c}" viewBox="0 0 24 24"><use href="#i-${n}"/></svg>`;
+const DIAS=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const toMin=h=>{const [a,b]=h.split(":");return +a*60+ +b};
+const dur=m=>{const h=Math.floor(m/60),r=m%60;return (h?h+" h":"")+(h&&r?" ":"")+(r?r+" min":"")};
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+N.servicios.forEach((s,i)=>s.id=i);
+let sel=new Set(); let reserva={fecha:null,hora:null,nombre:(store.get("abba:nombre")||""),pro:(N.profesionales[0]||""),nota:""};
+
+/* base */
+document.title=N.nombre+" · Turnos online";
+$("#logo").innerHTML=esc(N.nombre.split(" ")[0])+" <i>"+esc(N.nombre.split(" ").slice(1).join(" ")||N.sufijo||"")+"</i>";
+$("#eyebrow").textContent=N.rubro+" · "+N.ciudad;
+$("#nombre").innerHTML=esc(N.nombre.split(" ")[0])+"<br><em>"+esc(N.nombre.split(" ").slice(1).join(" ")||N.sufijo||"")+"</em>";
+$("#eslogan").textContent=N.eslogan;
+$("#heroimg").src=N.hero;N.galeria.forEach((g,i)=>$("#g"+(i+1)).src=g);
+const waBase="https://wa.me/"+N.whatsapp;
+const waHola=waBase+"?text="+encodeURIComponent("Hola! Vi la web de "+N.nombre+" y tengo una consulta.");
+$("#waTop").href=waHola;$("#fab").href=waHola;
+$("#waTop").innerHTML=ic("wa","f")+"Consultar";
+if(N.demo)$("#demo").innerHTML="<b>Demo de ejemplo</b> · servicios, precios y fotos ilustrativos. Así se vería la web de turnos de tu negocio.";else $("#demo").remove();
+if(N.demo)$("#why").hidden=false;
+$("#dir").textContent=N.direccion+", "+N.ciudad;
+const mapa="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(N.direccion+", "+N.ciudad+", Argentina");
+$("#links").innerHTML=`<a class="lnk" target="_blank" rel="noopener" href="${mapa}">${ic("pin")}Cómo llegar</a><a class="lnk" href="tel:${N.telefono.replace(/[^\d+]/g,"")}">${ic("phone")}${esc(N.telefono)}</a>${N.instagram?`<a class="lnk" target="_blank" rel="noopener" href="${N.instagram}">${ic("ig")}Instagram</a>`:""}`;
+$("#pagos").textContent=N.pagos;
+$("#foot").textContent="© "+new Date().getFullYear()+" "+N.nombre+" · Turnos online por WhatsApp";
+
+/* fecha / hora Argentina */
+function arNow(){
+  const p=new Intl.DateTimeFormat("en-US",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+  const g=t=>+p.find(x=>x.type===t).value;
+  const d=new Date(Date.UTC(g("year"),g("month")-1,g("day")));
+  return {d,min:g("hour")*60+g("minute"),dia:d.getUTCDay()};
+}
+const addD=(d,n)=>new Date(d.getTime()+n*864e5);
+const iso=d=>d.toISOString().slice(0,10);
+const fLarga=d=>new Intl.DateTimeFormat("es-AR",{timeZone:"UTC",weekday:"long",day:"numeric",month:"long"}).format(d);
+const rangos=dia=>N.horarios.filter(h=>h.dias.includes(dia));
+function estado(){
+  const {d,min,dia}=arNow();
+  const r=rangos(dia).find(h=>min>=toMin(h.de)&&min<toMin(h.a));
+  if(r)return {open:true,tx:"Abierto ahora · hasta "+r.a};
+  for(let k=0;k<8;k++){const dd=(dia+k)%7;const c=rangos(dd).filter(h=>k>0||toMin(h.de)>min).sort((a,b)=>toMin(a.de)-toMin(b.de))[0];
+    if(c)return {open:false,tx:"Cerrado · abre "+(k===0?"hoy":k===1?"mañana":DIAS[dd].toLowerCase())+" "+c.de}}
+  return {open:false,tx:"Cerrado"};
+}
+function pintaEstado(){const e=estado();$("#estado").className="pill "+(e.open?"open":"closed");$("#estadoTx").textContent=e.tx}
+pintaEstado();setInterval(pintaEstado,60000);
+(function(){const {dia}=arNow();
+  const cerrados=DIAS.map((_,i)=>i).filter(i=>!rangos(i).length).map(i=>DIAS[i]);
+  $("#horarios").innerHTML=N.horarios.map(h=>`<div class="hr ${h.dias.includes(dia)?"today":""}"><span>${esc(h.label)}</span><span>${h.de} a ${h.a}</span></div>`).join("")+`<div class="hr"><span>${cerrados.join(" y ")}</span><span>Cerrado</span></div>`})();
+
+/* servicios */
+$("#menu").innerHTML=N.categorias.map(c=>{
+  const it=N.servicios.filter(s=>s.cat===c.id);if(!it.length)return"";
+  return `<section class="cat" data-r><div class="cathead"><div class="th"><img src="${c.img}" alt="" loading="lazy"></div><div><h3>${esc(c.nombre)}</h3><p>${esc(c.sub||"")}</p></div></div><div class="list">${it.map(s=>`<button class="svc" data-s="${s.id}" aria-pressed="false"><span class="tx"><b>${esc(s.n)}</b><small>${esc(s.d)} · ${dur(s.min)}</small></span><span class="pr">${s.desde?"<small>desde </small>":""}${money(s.p)}</span><span class="chk">${ic("check")}</span></button>`).join("")}</div></section>`}).join("");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$("[data-r]").forEach(e=>io.observe(e));
+
+const tot=()=>[...sel].reduce((a,i)=>a+N.servicios[i].p,0);
+const tmin=()=>[...sel].reduce((a,i)=>a+N.servicios[i].min,0);
+const hayDesde=()=>[...sel].some(i=>N.servicios[i].desde);
+function barra(){
+  const n=sel.size;$("#bar").classList.toggle("show",n>0);$("#fab").classList.toggle("hide",n>0);
+  $("#bt").textContent=(hayDesde()?"desde ":"")+money(tot());
+  $("#bs").textContent=n+(n>1?" servicios":" servicio")+" · "+dur(tmin());
+  $$(".svc").forEach(b=>{const on=sel.has(+b.dataset.s);b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});
+}
+$("#menu").addEventListener("click",e=>{const b=e.target.closest("[data-s]");if(!b)return;const i=+b.dataset.s;sel.has(i)?sel.delete(i):sel.add(i);reserva.hora=null;barra();const bar=$("#bar");bar.classList.remove("bump");void bar.offsetWidth;bar.classList.add("bump")});
+
+/* horarios disponibles para una fecha */
+function slots(fecha){
+  const {d,min}=arNow();const dia=fecha.getUTCDay();const hoy=iso(fecha)===iso(d);const need=tmin()||30;const out=[];
+  rangos(dia).forEach(h=>{for(let t=toMin(h.de);t+need<=toMin(h.a);t+=N.intervalo){if(hoy&&t<=min+30)continue;out.push(t)}});
+  return out;
+}
+const hh=t=>String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0");
+
+/* sheet de reserva */
+let tt;function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("show"),2200)}
+let volver=null;
+function abre(){volver=document.activeElement;$("#scrim").classList.add("show");$("#sheet").classList.add("show");document.body.classList.add("lock");setTimeout(()=>{const x=$("#sheet [data-x]");x&&x.focus({preventScroll:true})},60)}
+function cierra(){if(!$("#sheet").classList.contains("show"))return;$("#scrim").classList.remove("show");$("#sheet").classList.remove("show");document.body.classList.remove("lock");if(volver&&volver.focus)volver.focus({preventScroll:true})}
+/* re-pinta la hoja sin perder el scroll vertical ni el de los días */
+function repinta(fn){const s=$("#sheet .scroll"),d=$("#sheet .days"),t=s?s.scrollTop:0,l=d?d.scrollLeft:0;fn();const s2=$("#sheet .scroll"),d2=$("#sheet .days");if(s2)s2.scrollTop=t;if(d2)d2.scrollLeft=l}
+$("#scrim").onclick=cierra;addEventListener("keydown",e=>e.key==="Escape"&&cierra());
+
+function reservar(){
+  const {d}=arNow();
+  const dias=[];for(let i=0;i<21&&dias.length<14;i++){const f=addD(d,i);const ok=rangos(f.getUTCDay()).length>0&&slots(f).length>0;dias.push({f,ok})}
+  if(!reserva.fecha||!dias.find(x=>x.ok&&iso(x.f)===reserva.fecha)){const p=dias.find(x=>x.ok);reserva.fecha=p?iso(p.f):null}
+  const el=$("#sheet");
+  const pinta=()=>{
+    const f=reserva.fecha?new Date(reserva.fecha+"T00:00:00Z"):null;const ss=f?slots(f):[];
+    if(reserva.hora&&!ss.includes(reserva.hora))reserva.hora=null;
+    el.innerHTML=`<div class="grab"></div><button class="x" data-x aria-label="Cerrar">${ic("x")}</button>
+    <div class="scroll"><h3>Tu turno <em>en ${esc(N.nombre.split(" ")[0])}</em></h3>
+      <div class="resumen">${[...sel].map(i=>{const s=N.servicios[i];return `<div><span>${esc(s.n)} <small style="color:var(--mut)">· ${dur(s.min)}</small></span><span>${s.desde?"desde ":""}${money(s.p)}</span></div>`}).join("")}<div><span>Total estimado · ${dur(tmin())}</span><span>${hayDesde()?"desde ":""}${money(tot())}</span></div></div>
+      <div class="lbl"><b>1</b>Elegí el día</div>
+      <div class="days">${dias.map(x=>`<button class="day ${iso(x.f)===reserva.fecha?"on":""}" data-f="${iso(x.f)}" ${x.ok?"":"disabled"}><small>${DIAS[x.f.getUTCDay()].slice(0,3)}</small><b>${x.f.getUTCDate()}</b><small>${new Intl.DateTimeFormat("es-AR",{timeZone:"UTC",month:"short"}).format(x.f).replace(".","")}</small></button>`).join("")}</div>
+      <div class="lbl"><b>2</b>Elegí el horario</div>
+      ${ss.length?`<div class="slots">${ss.map(t=>`<button class="slot ${reserva.hora===t?"on":""}" data-h="${t}">${hh(t)}</button>`).join("")}</div><p class="hint" style="margin-top:.7rem">Horarios que entran con la duración de tus servicios. Te confirmamos disponibilidad por WhatsApp.</p>`:`<p class="hint">${reserva.fecha?"No hay horarios ese día para esta duración.":"No encontramos horarios para esta combinación de servicios. Probá con menos servicios o consultanos por WhatsApp."}</p>`}
+      <div class="lbl"><b>3</b>Tus datos</div>
+      <input class="in-t" id="nom" placeholder="Tu nombre" value="${esc(reserva.nombre)}" autocomplete="name">
+      ${N.profesionales.length?`<div class="pros" style="margin-top:12px">${N.profesionales.map(p=>`<button class="pro ${p===reserva.pro?"on":""}" data-p="${esc(p)}">${esc(p)}</button>`).join("")}</div>`:""}
+      <textarea class="in-t" id="nota" rows="2" style="margin-top:12px;resize:none" placeholder="¿Algo que debamos saber? (opcional)">${esc(reserva.nota)}</textarea>
+    </div>
+    <div class="foot"><button class="big" id="send">${ic("wa","f")} Pedir turno por WhatsApp</button><p class="note">${N.demo?"Es una demo: el mensaje se arma completo y se abre en WhatsApp.":"No se cobra nada ahora. El salón te confirma el turno."}</p></div>`;
+  };
+  const leer=()=>{const n=$("#nom");if(n){reserva.nombre=n.value;if(n.value.trim())n.classList.remove("err");reserva.nota=$("#nota").value;store.set("abba:nombre",reserva.nombre)}};
+  pinta();abre();
+  el.onclick=e=>{
+    if(e.target.closest("[data-x]"))return cierra();
+    const f=e.target.closest("[data-f]");if(f){leer();reserva.fecha=f.dataset.f;repinta(pinta);return}
+    const h=e.target.closest("[data-h]");if(h){leer();reserva.hora=+h.dataset.h;repinta(pinta);return}
+    const p=e.target.closest("[data-p]");if(p){leer();reserva.pro=p.dataset.p;repinta(pinta);return}
+    if(e.target.closest("#send")){leer();enviar()}
+  };
+}
+function enviar(){
+  if(!reserva.hora){toast("Elegí un horario");return}
+  const nom=$("#nom");if(!reserva.nombre.trim()){nom.classList.remove("err");void nom.offsetWidth;nom.classList.add("err");toast("Poné tu nombre");return}
+  const f=new Date(reserva.fecha+"T00:00:00Z");const L=[];
+  L.push("*Solicitud de turno · "+N.nombre+"*","");
+  [...sel].forEach(i=>{const s=N.servicios[i];L.push("• "+s.n+" — "+(s.desde?"desde ":"")+money(s.p))});
+  L.push("","*Total estimado:* "+(hayDesde()?"desde ":"")+money(tot()),"*Duración:* "+dur(tmin()),"");
+  const fl=fLarga(f);L.push("*Día:* "+fl.charAt(0).toUpperCase()+fl.slice(1),"*Hora:* "+hh(reserva.hora)+" hs","*Nombre:* "+reserva.nombre.trim());
+  if(N.profesionales.length&&reserva.pro)L.push("*Profesional:* "+reserva.pro);
+  if(reserva.nota.trim())L.push("*Comentarios:* "+reserva.nota.trim());
+  L.push("","¿Me confirman disponibilidad? Gracias!");
+  const url=waBase+"?text="+encodeURIComponent(L.join("\n"));
+  window.__ultimoWA=url;window.open(url,"_blank","noopener");toast("Abriendo WhatsApp…");
+}
+$("#bgo").onclick=reservar;
+barra();
+</script>
+</body>
+</html>
